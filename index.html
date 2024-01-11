@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+    <title>VMC</title>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="bg-brightBlue text-white p-4">
+        <div class="container flex justify-between items-center lg:mx-20">
+            <div class="flex">
+                <span><img src="/img/logo.png" alt=""></span>
+                <span class="text-3xl font-bold my-5"><h1>VMC booking.com</h1></span>
+            </div>
+            <div class="hidden md:block">
+                <ul class="flex space-x-4 md:space-x-6">
+                    <li><a href="#" class="hover:text-gray-300">Home</a></li>
+                    <li><a href="#" class="hover:text-gray-300 flex"> <img src="img/stay.png" alt="">Stays</a></li>
+                    <li><a href="#" class="hover:text-gray-300 flex"> <img src="img/flight.png" alt="">Flight</a></li>
+                    <li><a href="#" class="hover:text-gray-300">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="lg:mr-20">Sign in</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <img src="img/hero.png" alt="" class="md:w-full md:h-full">
+        </div>
+        <!-- Selection Section-->
+        <div class="container z-10 relative  md:-mt-20 -mt-32 md:h-40 w-full bg-purple-500  items-center justify-center rounded-lg  mx-auto">
+            <div class="flex  justify-center items-center md:space-x-5 rounded-lg flex-col md:flex-row sm:h-auto space-y-2 space-x-0 sm:w-auto py-5 px-5">
+                <!-- first selection -->
+                <div id="secondDropdownBtn" class="flex md:w-1/3  w-full h-14 md:h-28 rounded-md bg-white  justify-between px-5 items-center cursor-pointer ">
+                    <div class="flex space-x-3">
+                        <span><img src="img/stayblack.png" alt=""></span>
+                        <span class="" id="selectedState">Enugu</span>
+                    </div>
+                    <span>
+                        <svg class="-mr-1 ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div id="secondDropdownContent" class="mt-96 absolute w-56 rounded-md shadow-lg hidden">
+                    <div class="rounded-md bg-white shadow-xs overflow-y-auto max-h-40">
+                        <div class="py-1 flex flex-col space-y-2" id="secondStateOptions">
+                            <!-- State options will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+
+            <!-- second selection -->
+            
+            <div id="firstDropdownBtn" class="flex md:w-1/3  w-full h-14  md:h-28 bg-white space-x-5  rounded-md  items-center  justify-between px-5">
+                <div class="flex space-x-3">
+                    <span><img src="img/calender.png" alt=""></span>
+                    <span id="datePicker" class="" type="text"  ><h3 id="selectedDate">Wed 1  Oct </h3></span> 
+                    <span>-</span>
+                    <span id="datePicker2" class="" type="text"  ><h3 id="selectedDate2">Thur 2  Nov </h3></span>
+                </div>
+                <span>
+                    <svg class="-mr-1 ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </span>
+            </div>
+            <!-- thirst selection -->
+                     
+            <div id="secondDropdownBtn" class="flex md:w-1/3  w-full h-14 rounded-md bg-white space-x-5 items-center cursor-pointer  justify-between px-5 md:h-28">
+                <div class="flex space-x-3">
+                    <span><img src="img/people.png" alt=""></span>
+                    <span class="" id="selectedState">2 adults. 0 Children. 1 Room</span>
+                </div>
+                <span>
+                    <svg class="-mr-1 ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </span>
+            </div>
+            
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const datePicker = new Pikaday({
+        field: document.getElementById('datePicker'),
+        format: 'ddd D MMM', // Customize the date format
+        showYearDropdown: true, // Optionally show the year dropdown
+        onSelect: function (date) {
+                    // Format the selected date
+                    const formattedDate = moment(date).format('ddd D MMM');
+                    
+                    // Update the content of the span with the selected date
+                    document.getElementById('selectedDate').textContent = formattedDate;
+                    
+                },
+            });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+    const datePicke2r = new Pikaday({
+        field: document.getElementById('datePicker2'),
+        format: 'ddd D MMM', // Customize the date format
+        showYearDropdown: true, // Optionally show the year dropdown
+        onSelect: function (date) {
+                    // Format the selected date
+                    const formattedDate = moment(date).format('ddd D MMM');
+                    
+                    // Update the content of the span with the selected date
+                    document.getElementById('selectedDate2').textContent = formattedDate;
+                    
+                },
+            });
+    });
+
+
+    </script>
+  
+    <script src="js/script.js"></script>
+</body>
+</html>

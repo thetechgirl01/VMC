@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+    <title>Date Picker Example</title>
+</head>
+<body>
+
+    <label for="datePicker">Select Date:</label>
+    <input type="text" id="datePicker">
+    
+    <span id="selectedDate"></span>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const datePicker = new Pikaday({
+                field: document.getElementById('datePicker'),
+                format: 'ddd D MMM', // Customize the date format
+                showYearDropdown: true, // Optionally show the year dropdown
+                onSelect: function (date) {
+                    // Format the selected date
+                    const formattedDate = moment(date).format('ddd D MMM');
+                    
+                    // Update the content of the span with the selected date
+                    document.getElementById('selectedDate').textContent = formattedDate;
+                },
+            });
+        });
+    </script>
+
+</body>
+</html>

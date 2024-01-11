@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Travel Explorer</title>
+    <style>
+        /* Hide the calendar icon for date input */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+    
+        /* Optionally hide the clear button that some browsers may display */
+        input[type="date"]::-webkit-clear-button {
+            display: none;
+        }
+    </style>
+    
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar Section -->
+    <nav class="bg-blue-700 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-lg font-semibold">Travel Explorer</h1>
+            <!-- Dropdown Menu -->
+            <div class="relative inline-block text-left">
+                <div>
+                    <button id="dropdownBtn" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-gray-800 text-sm leading-5 font-medium text-white focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-800 active:text-white transition ease-in-out duration-150">
+                        Options
+                        <svg class="-mr-1 ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="dropdownContent" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg hidden">
+                    <div class="rounded-md bg-white shadow-xs">
+                        <div class="py-1">
+                            <a href="#" data-value="Option 1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Option 1</a>
+                            <a href="#" data-value="Option 2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Option 2</a>
+                            <a href="#" data-value="Option 3" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Option 3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Dropdown Menu -->
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-blue-500 text-white py-12 text-center">
+        <!-- ... (rest of the hero section remains unchanged) -->
+    </header>
+
+    <!-- Destinations Section -->
+    <section class="container mx-auto my-12">
+        <!-- ... (rest of the destinations section remains unchanged) -->
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-200 py-16">
+        <!-- ... (rest of the features section remains unchanged) -->
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownBtn = document.getElementById('dropdownBtn');
+            const dropdownContent = document.getElementById('dropdownContent');
+
+            dropdownBtn.addEventListener('click', function () {
+                dropdownContent.classList.toggle('hidden');
+            });
+
+            // Close dropdown when clicking outside of it
+            document.addEventListener('click', function (event) {
+                if (!dropdownBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+                    dropdownContent.classList.add('hidden');
+                }
+            });
+
+            // Select option and save value on click
+            dropdownContent.addEventListener('click', function (event) {
+                if (event.target.dataset.value) {
+                    const selectedValue = event.target.dataset.value;
+                    dropdownBtn.textContent = `Selected: ${selectedValue}`;
+                    // You can do something with the selected value, such as sending it to a server or updating other parts of the page.
+                }
+            });
+        });
+    </script>
+
+    <input type="date" value="2024-01-07">
+    <div class="date-range-picker">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate">
+    
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate">
+    </div>
+    
+</body>
+</html>
