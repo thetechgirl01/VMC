@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants; 
+
+@media screen and (min-width: 976px) {
+    .text-sm {
+        font-size: larger;
+    }
+    
+}
